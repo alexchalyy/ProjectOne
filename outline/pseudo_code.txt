@@ -20,9 +20,9 @@ Adopt a Pet Pseudocode.
 
 			else display pet description from wikipeida to id = "pet_description"
 
-			     if there are more than 10 results
+			     if there are more than 8 results
 
-				  output first 10 pictures of pets, names, shelter names, addresses, and phone numbers into (id = "results")
+				  output first 8 pictures of pets, names, shelter names, addresses, and phone numbers into (id = "results")
 
 			     else output all results' pictures of pets, names, shelter names, addresses, and phone numbers into (id = "results")
 
