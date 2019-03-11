@@ -26,6 +26,7 @@ Back end:	Bryan Buckus/Ronald Seide
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,8 +36,38 @@ Back end:	Bryan Buckus/Ronald Seide
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="assets/javascript/script.js"></script>
+    <div class="container" id="c1">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12" id="title">
+                        <h1>Adopt A Pet!</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" id="search">
+                        <div class="search-container">
+                            <form action="/action_page.php">
+                                <input type="text" placeholder="Search.." name="search" id="text_box">
+                                <button type="submit" id="submit_button" href='#'>Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" id="pet_description">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12" id="results">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="assets/javascript/script.js"></script>
 </body>
+
 </html>

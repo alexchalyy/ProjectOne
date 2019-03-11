@@ -1,0 +1,16 @@
+/*  This styles the background for PET finder.  */
+
+/*  This sets the background of the body. */
+
+body    {
+    background-image: url("../images/pet-background.jpg");
+}
+
+/*  This styles the search box card. */
+
+.card {
+    margin-top: 10%;
+    background: black;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
