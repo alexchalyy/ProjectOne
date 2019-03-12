@@ -65,7 +65,7 @@ $(document).ready(function () {
     });
 });
 
-
+// this is the api call to wikipedia to call back the summarry from the pitbull page bryan
 var queryUrl = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=pit_bull";
     
 $.ajax({
