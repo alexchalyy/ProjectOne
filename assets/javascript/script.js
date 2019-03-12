@@ -48,7 +48,7 @@ $(document).ready(function () {
             }
         });
 
-        /*
+        
 
 
 
@@ -64,3 +64,17 @@ $(document).ready(function () {
 
     });
 });
+
+
+var queryUrl = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=pit_bull";
+    
+$.ajax({
+        url: queryUrl,
+        method: "GET"
+        })
+        
+        .then(function(response) {
+            console.log(response);
+            var results = response.query.pages[64235].extract;
+            console.log(results);
+        });
