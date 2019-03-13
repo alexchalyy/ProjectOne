@@ -80,6 +80,7 @@ $(document).ready(function () {
 
 /*  This is for future use of retrieving data from wikipedia.
 
+// this is the api call to wikipedia to call back the summarry from the pitbull page bryan
 var queryUrl = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=pit_bull";
 
 $.ajax({
@@ -93,3 +94,5 @@ $.ajax({
         console.log(results);
     });
 */
+
+//test
