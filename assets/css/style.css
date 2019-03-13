@@ -14,3 +14,11 @@ body    {
     color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+/*  This styles the drop down button. */
+
+#dropdown   {
+    background: black;
+    color: white;
+    border: white;
+}

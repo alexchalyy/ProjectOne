@@ -39,10 +39,10 @@ Back end:	Bryan Buckus/Ronald Seide
 
 <body>
     <!--    This is a pop-up modal windown that pops up when incorrect dog breed is entered. -->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
+    <!--<div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">-->
+    <!-- Modal content-->
+    <!--<div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Woof Woof!</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -56,7 +56,7 @@ Back end:	Bryan Buckus/Ronald Seide
             </div>
 
         </div>
-    </div>
+    </div>-->
     <!--    This is static body of html file. -->
     <div class="container" id="c1">
         <div class="card">
@@ -68,11 +68,23 @@ Back end:	Bryan Buckus/Ronald Seide
                 </div>
                 <div class="row">
                     <div class="col-sm-12" id="search">
-                        <div class="search-container">
-                            <form action="/action_page.php">
-                                <input type="text" placeholder="Search.." name="search" id="text_box">
-                                <button type="submit" id="submit_button" href='#'>Submit</button>
-                            </form>
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle black" data-toggle="dropdown"
+                                id="dropdown">
+                                Dropdown button
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Pitbull</a>
+                                <a class="dropdown-item" href="#">Beagle</a>
+                                <a class="dropdown-item" href="#">Husky</a>
+                                <a class="dropdown-item" href="#">Collie</a>
+                                <a class="dropdown-item" href="#">Bulldog</a>
+                                <a class="dropdown-item" href="#">Chihuahua</a>
+                                <a class="dropdown-item" href="#">Pug</a>
+                                <a class="dropdown-item" href="#">Boxer</a>
+                                <a class="dropdown-item" href="#">German Shepherd</a>
+                                <a class="dropdown-item" href="#">Dobermann</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -88,7 +100,10 @@ Back end:	Bryan Buckus/Ronald Seide
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="assets/javascript/script.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>
