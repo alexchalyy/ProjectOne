@@ -28,13 +28,69 @@ $(document).ready(function () {
                 $("#dogText"+i).html(dogName + "<br></br>Test");
             }
         })
-        $.ajax({
+        // bryan b api info
+        var dogBreed = [
+            {dog:"pit_bull",
+            pagenumber:"64235",
+            },
+            {dog:"beagle",
+            pagenumber:"4368",
+            },
+            {dog:"husky",
+            pagenumber:"530115",
+            },
+            {dog:"border_collie",
+            pagenumber:"102136",
+            },
+            {dog:"bulldog",
+            pagenumber:"242068",
+            },
+            {dog:"chihuahua_(dog)",
+            pagenumber:"26998504",
+            },
+            {dog:"pug",
+            pagenumber:"21234727",
+            },
+            {dog:"boxer_(dog)",
+            pagenumber:"253409",
+            },
+            {dog:"german_shepherd",
+            pagenumber:"79289",
+            },
+            {dog:"dobermann",
+            pagenumber:"2139688",
+            },
+        ];
+        console.log(dogBreed[9].dog);
+    
+        var queryUrl = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=5&titles="+ dogBreed[9].dog;
+        
+       
+    $.ajax({
             url: queryUrl,
             method: "GET"
-        }).then(function (response) {
-            // console.log(response);
-            var results = response.query.pages[64235].extract;
-            // console.log(results);
-        });
+            })
+            
+            .then(function(response) {
+                console.log(response);
+                
+                var dogPage = dogBreed[9].pagenumber;
+                var results = response.query.pages[dogPage].extract;
+                console.log(results);
+                var title = response.query.pages[dogPage].title;
+                console.log(title);
+    
+                // var head = $("<h3>");
+                // head.text(title + " info");
+    
+                // $("#main").append(head);
+    
+                // var p = $("<p>");
+                // p.text(results);
+    
+                // $("#main").append(p);
+    
+    
+            });
     })
 });
