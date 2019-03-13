@@ -14,7 +14,7 @@ function validSearch() {
 $(document).ready(function () {
 
     $("#submit_button").on("click", function (event) {
-        //  This needs to become a select box so that the user input is idential to breed.list on the PetFinder.com api. The list is found here: https://api.petfinder.com/breed.list?animal=dog&format=json&key=8ed9687e011d3ec63d28893e2ae6348e.
+        //  This needs to become a select box so that the user input is idential to breed.list on the PetFinder.com api. The list is found here: https://api.petfinder.com/breed.list?animal=dog&format=json&key=8ed9687e011d3ec63d28893e2ae6348e.//
 
         //  This line prevents refreshing when user clicks on submit button.
         event.preventDefault();
@@ -32,35 +32,26 @@ $(document).ready(function () {
         $.ajax({
             url: pfUrl,
             dataType: 'jsonp',
-            success: function (jsonpData) {
-                console.log(jsonpData);
-                /* Here is where we need to start pulling out things like name and a photo from jsonpData. The below is more pseudocode than anything else. 
-                //jsonpData.petfinder.pets;
-                var dogData = jsonpData.petfinder.pets.pet;
-                console.log(dogData);
-                for(var i=0;i<dogData.length;i++) {
-                    var dogName = dogData[i].name;
-                    console.log(dogName);
-                }
-                */
+            method: "GET"
+        }).then(function(response) {
+            dogData = response.petfinder.pets.pet;
+            console.log(dogData);
+            for(var i = 0; i < 5; i++) {
+                var dogData = response.petfinder.pets.pet[i];
+            console.log(dogData.name.$t)
+            console.log(dogData.media.photos.photo[0].$t);
+            // console.log(dogData);
+            console.log(dogData);
+              
+        }
+            // console.log(response);
+            // for(var i=0; 1 < 5; i++) {
+            //     var dogName = dogData[i].petfinder.pets.pet.name;
+            //     console.log(dogName);
+            // }
 
-                //var dogPhoto = dogData.pets.pet.(img of some sort)
-            }
-        });
-
-        /*
-
-
-
-
-        //  These lines empty breed description and search results when submit button is clicked before new search is performed.
-
-        $("#pet_description").empty();
-        $("#results").empty();
-
-        //  This clears the search box, after user clicks submit button.
-
-        $("#text_box").val("");
-
-    });
+        }
+        
+        )
+    })
 });
