@@ -17,17 +17,15 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
             dogData = response.petfinder.pets.pet;
-            // console.log(dogData);
+            console.log(dogData);
             for (var i = 0; i < 5; i++) {
                 var dogData = response.petfinder.pets.pet[i];
-                var dogPhoto = dogData.media.photos.photo[3].$t;
+                var dogPhoto = dogData.media.photos.photo[1].$t;
                 console.log(dogPhoto);
                 $("#dogPhoto"+i).attr("src", dogPhoto);
                 var dogName = dogData.name.$t;
                 console.log(dogName);
                 $("#dogText"+i).html(dogName + "<br></br>Test");
-
-                // console.log(dogData);
             }
         })
         $.ajax({
