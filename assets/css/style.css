@@ -22,3 +22,11 @@ body    {
     color: white;
     border: white;
 }
+.dogPhotos, .dogText {
+    background-color: white;
+    color: black;
+}
+.dogImage {
+    width: 100%;
+    height: auto;
+}
