@@ -9,10 +9,11 @@ body    {
 /*  This styles the search box card. */
 
 .card {
-    margin-top: 10%;
+    margin-top: 2%;
     background: black;
     color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-bottom: 1rem;
 }
 
 /*  This styles the drop down button. */
@@ -25,8 +26,13 @@ body    {
 .dogPhotos, .dogText {
     background-color: white;
     color: black;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 .dogImage {
     width: 100%;
     height: auto;
+}
+#pet_description {
+    background-color: white;
 }
