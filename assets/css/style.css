@@ -13,7 +13,7 @@ body    {
     background: black;
     color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin-bottom: 1rem;
+    /*margin-bottom: 1rem;*/
 }
 
 /*  This styles the drop down button. */
@@ -35,4 +35,10 @@ body    {
 }
 #pet_description {
     background-color: white;
+}
+
+#results    {
+    background: white;
+    padding-top: 2%;
+    padding-bottom: 2%;
 }

@@ -9,7 +9,7 @@ $(document).ready(function () {
 
         //Generate API URLs for Petfinder and Wikipedia.
         var pfApiKey = "3b7e9ed23b598ca17ae1d73381f1544f";
-        var pfUrl = "https://api.petfinder.com/pet.find?key=" + pfApiKey + "&location=44113&status=A&breed=" + breed + "&count=5&output=basic&format=json";
+        var pfUrl = "https://api.petfinder.com/pet.find?key=" + pfApiKey + "&location=44113&status=A&breed=" + breed + "&count=6&output=basic&format=json";
         var queryUrl = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=pit_bull";
         
         // Petfinder API call. 
@@ -18,15 +18,17 @@ $(document).ready(function () {
             dataType: 'jsonp',
             method: "GET"
         }).then(function (response) {
-            dogData = response.petfinder.pets.pet;
-            for (var i = 0; i < 5; i++) {
+            //var dogData = response.petfinder.pets.pet;
+            console.log(response);
+            for (var i = 0; i < 6; i++) {            
                 var dogData = response.petfinder.pets.pet[i];
                 var dogPhoto = dogData.media.photos.photo[1].$t;
-                $("#dogPhoto"+i).attr("src", dogPhoto);
+                //$("#dogPhoto"+i).attr("src", dogPhoto);
                 var dogName = dogData.name.$t;
                 var dogLocation = dogData.contact.city.$t;
                 var dogPhone = dogData.contact.phone.$t;
-                $("#dogText"+i).html("<b>" + dogName + "</b><br>Location:<br>" + dogLocation + "<br>Call:<br>" + dogPhone);
+                $("#results").prepend("<div class=\"col-sm-2\"><img src = " + dogPhoto.toString() + "></div>");
+                //$("#dogText"+i).html("<b>" + dogName + "</b><br>Location:<br>" + dogLocation + "<br>Call:<br>" + dogPhone);
             }
         })
         // Wikipedia API call.
