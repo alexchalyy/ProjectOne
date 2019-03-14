@@ -27,7 +27,8 @@ $(document).ready(function () {
                 var dogName = dogData.name.$t;
                 var dogLocation = dogData.contact.city.$t;
                 var dogPhone = dogData.contact.phone.$t;
-                $("#results").prepend("<div class=\"col-sm-2\"><img src = " + dogPhoto.toString() + "></div>");
+                $("#results").prepend("<div class=\"col-sm-2\"><p>" + dogName.toString() + "</p><p>" + dogLocation.toString() + 
+                                      "</p><p>" + dogPhone.toString() + "</p><img src = " + dogPhoto.toString() + "></div>");
                 //$("#dogText"+i).html("<b>" + dogName + "</b><br>Location:<br>" + dogLocation + "<br>Call:<br>" + dogPhone);
             }
         })
@@ -64,10 +65,10 @@ $(document).ready(function () {
             pagenumber:"2139688",
             },
         ];
-        console.log(dogBreed[$(this).attr("data-value")].dog);
-        console.log(dogBreed[$(this).attr("data-value")].pagenumber);
+        console.log(dogBreed[9].dog);
+        console.log(dogBreed[9].pagenumber);
     
-        var queryUrl = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=5&titles="+ dogBreed[$(this).attr("data-value")].dog;
+        var queryUrl = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=5&titles="+ dogBreed[9].dog;
         
        
     $.ajax({
@@ -78,7 +79,7 @@ $(document).ready(function () {
             .then(function(response) {
                 console.log(response);
                 
-                var dogPage = dogBreed[$(this).attr("data-value")].pagenumber;
+                var dogPage = dogBreed[9].pagenumber;
                 var results = response.query.pages[dogPage].extract;
                 console.log(results);
                 var title = response.query.pages[dogPage].title;
