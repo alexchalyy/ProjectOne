@@ -13,7 +13,6 @@ body    {
     background: black;
     color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    /*margin-bottom: 1rem;*/
 }
 
 /*  This styles the drop down button. */
@@ -23,22 +22,35 @@ body    {
     color: white;
     border: white;
 }
+
+/* This styles the results' photos. */
+
 .dogPhotos, .dogText {
     background-color: white;
     color: black;
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
+
 .dogImage {
     width: 100%;
     height: auto;
 }
+
+/*  This puts white background on pet description. */
+
 #pet_description {
     background-color: white;
 }
 
+/*  This puts white background around results. */
+
 #results    {
     background: white;
-    padding-top: 2%;
+}
+
+/*  This puts padding on bottom of results pictures. */
+
+.pics   {
     padding-bottom: 2%;
 }
