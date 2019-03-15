@@ -1,8 +1,10 @@
 
 
 $(document).ready(function () {
+   
     // $("#submit_button").on("click", function (event) {
     $(".dropdown-item").on("click", function (event) {
+        $("#pet_description").empty();
         // event.preventDefault();
         // var breed = "Pit Bull Terrier" // To be replaced with values from the select box.
         var breed = $(this).attr("value"); // To be replaced with values from the select box.
@@ -62,8 +64,11 @@ $(document).ready(function () {
             pagenumber:"2139688",
             },
         ];
-        console.log(dogBreed[$(this).attr("data-value")].dog);
-        console.log(dogBreed[$(this).attr("data-value")].pagenumber);
+        
+        // console.log(dogBreed[$(this).attr("data-value")].dog);
+        var getDog = [$(this).attr("data-value")];
+        
+        // console.log(dogBreed[$(this).attr("data-value")].pagenumber);
     
         var queryUrl = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=5&titles="+ dogBreed[$(this).attr("data-value")].dog;
         
@@ -74,23 +79,24 @@ $(document).ready(function () {
             })
             
             .then(function(response) {
-                console.log(response);
+                console.log(getDog)
                 
-                var dogPage = dogBreed[$(this).attr("data-value")].pagenumber;
+                var dogPage = dogBreed[getDog].pagenumber;
+                // console.log(dogPage);
                 var results = response.query.pages[dogPage].extract;
-                console.log(results);
+                // console.log(results);
                 var title = response.query.pages[dogPage].title;
-                console.log(title);
+                // console.log(title);
     
-                // var head = $("<h3>");
-                // head.text(title + " info");
+                var head = $("<h3>");
+                head.text(title + " info");
     
-                // $("#main").append(head);
+                $("#pet_description").append(head);
     
-                // var p = $("<p>");
-                // p.text(results);
+                var p = $("<p>");
+                p.text(results);
     
-                // $("#main").append(p);
+                $("#pet_description").append(p);
     
     
             });
