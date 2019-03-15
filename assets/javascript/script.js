@@ -1,38 +1,27 @@
 
 
 $(document).ready(function () {
-    // $("#submit_button").on("click", function (event) {
     $(".dropdown-item").on("click", function (event) {
-        // event.preventDefault();
-        // var breed = "Pit Bull Terrier" // To be replaced with values from the select box.
-        var breed = $(this).attr("value"); // To be replaced with values from the select box.
-
-        //Generate API URLs for Petfinder and Wikipedia.
+        var breed = $(this).attr("value"); 
         var pfApiKey = "3b7e9ed23b598ca17ae1d73381f1544f";
         var pfUrl = "https://api.petfinder.com/pet.find?key=" + pfApiKey + "&location=44113&status=A&breed=" + breed + "&count=6&output=basic&format=json";
         var queryUrl = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=pit_bull";
         
-        // Petfinder API call. 
         $.ajax({
             url: pfUrl,
             dataType: 'jsonp',
             method: "GET"
         }).then(function (response) {
-            //var dogData = response.petfinder.pets.pet;
             console.log(response);
             for (var i = 0; i < 6; i++) {            
                 var dogData = response.petfinder.pets.pet[i];
                 var dogPhoto = dogData.media.photos.photo[1].$t;
-                //$("#dogPhoto"+i).attr("src", dogPhoto);
                 var dogName = dogData.name.$t;
                 var dogLocation = dogData.contact.city.$t;
                 var dogPhone = dogData.contact.phone.$t;
-                $("#results").prepend("<div class=\"col-sm-2\"><p>" + dogName.toString() + "</p><p>" + dogLocation.toString() + 
-                                      "</p><p>" + dogPhone.toString() + "</p><img src = " + dogPhoto.toString() + "></div>");
-                //$("#dogText"+i).html("<b>" + dogName + "</b><br>Location:<br>" + dogLocation + "<br>Call:<br>" + dogPhone);
+                $("#results").prepend("<div class=\"col-sm-2\"><p>" + dogName.toString() + "</p><p>" + dogLocation.toString() + "</p><p>" + dogPhone.toString() + "</p><img src = " + dogPhoto.toString() + "></div>");
             }
         })
-        // Wikipedia API call.
         var dogBreed = [
             {dog:"pit_bull",
             pagenumber:"64235",
@@ -84,18 +73,6 @@ $(document).ready(function () {
                 console.log(results);
                 var title = response.query.pages[dogPage].title;
                 console.log(title);
-    
-                // var head = $("<h3>");
-                // head.text(title + " info");
-    
-                // $("#main").append(head);
-    
-                // var p = $("<p>");
-                // p.text(results);
-    
-                // $("#main").append(p);
-    
-    
             });
     })
 });

@@ -1,27 +1,18 @@
-<!-- 
-    
+<!--  
 Project Title:	Adopt A Pet.
-
 Team Members:	
-
-Alex Chalyy     Bryan Buckus	Ronald Seide	Napoleon Stephen Wilson III
+Alex Chalyy     Bryan Buckus	Ron Seide	Napoleon Stephen Wilson III
 
 Project Description:
-
-This project accepts dog breed, prints out dog breed description, and displays 10 or less local animal shelter pet images (same breed) with names of pet shelters, addresses, and phone numbers. If there are less than 10 results, less results are returned. If there are no results, message stating that there no results is printed. If the dog breen is not correct, proper message is generated using modal jQuery.
+This project accepts a dog breed from a dropdown menu, displays a dog breed description, and displays 6 or less local animal shelter pets of that breed. For each pet, an images of the pet is displayed along with the name, location and contact phone number. If there are less than 6 results, less results are returned. If there are no results, message stating that there no results is printed. 
 
 APIs to be used:
-
 https://www.mediawiki.org/wiki/API:Main_page
-
 https://www.petfinder.com/developers/api-docs
 
-Rough Breakdown of tasks:
-
+Breakdown of tasks:
 Front end:	Alex Chalyy/Napoleon Stephen Wilson III
-
-Back end:	Bryan Buckus/Ronald Seide
-
+Back end:	Bryan Buckus/Ron Seide
 -->
 
 <!DOCTYPE html>
@@ -38,25 +29,6 @@ Back end:	Bryan Buckus/Ronald Seide
 </head>
 
 <body>
-    <!--    This is a pop-up modal windown that pops up when incorrect dog breed is entered. -->
-    <!--<div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">-->
-    <!-- Modal content-->
-    <!--<div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Woof Woof!</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p>Please enter a valid dog breed!</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-
-        </div>
-    </div>-->
     <!--    This is static body of html file. -->
     <div class="container" id="c1">
         <div class="card">
@@ -93,40 +65,12 @@ Back end:	Bryan Buckus/Ronald Seide
         </div>
         <div class="row">
             <div class="col-sm-12" id="pet_description">
-                <!--
-                <p><h5>Suggested Place for Wikepedia Breed Description</h5>
-                    This wouldn't be displayed prior to clicking the submit button on the finished application. Rather, it would be displayed only upon onclick just as the petfinder results are currently. This is for position only and only a suggestion. And now for some fake Latin: 
-                    ipsum dolor sit amet consectetur adipisicing elit. Illo rerum et, praesentium asperiores itaque
-                    necessitatibus quod officia earum ipsa officiis dolorem temporibus vero impedit iste odit,
-                    aspernatur assumenda quae explicabo.</p>-->
             </div>
         </div>
         <br>
         <div class="row" id="results">
-            <!--<div class="col-sm-12" >
-            </div>-->
         </div>
     </div>
-    <!--
-        <div class="row">-->
-    <!--<div class="col-sm-1 dogPhotos"><input type="submit" value="Submit" id="submit_button">Temporary!</div>-->
-    <!--<div class="col-sm-2 dogPhotos"><img src="" id="dogPhoto0" class="dogImage"></div>
-            <div class="col-sm-2 dogPhotos"><img src="" id="dogPhoto1" class="dogImage"></div>
-            <div class="col-sm-2 dogPhotos"><img src="" id="dogPhoto2" class="dogImage"></div>
-            <div class="col-sm-2 dogPhotos"><img src="" id="dogPhoto3" class="dogImage"></div>
-            <div class="col-sm-2 dogPhotos"><img src="" id="dogPhoto4" class="dogImage"></div>
-            <div class="col-sm-1 dogPhotos"></div>
-        </div>
-        <div class="row dogText">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-2" id="dogText0"></div>
-            <div class="col-sm-2" id="dogText1"></div>
-            <div class="col-sm-2" id="dogText2"></div>
-            <div class="col-sm-2" id="dogText3"></div>
-            <div class="col-sm-2" id="dogText4"></div>
-            <div class="col-sm-1"></div>
-        </div>-->
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
