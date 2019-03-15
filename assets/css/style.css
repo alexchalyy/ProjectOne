@@ -41,6 +41,8 @@ body    {
 
 #pet_description {
     background-color: white;
+    margin-left: 15px;
+    margin-right: -15px;
 }
 
 /*  This puts white background around results. */
@@ -65,4 +67,8 @@ body    {
 
 #paragraph  {
     font-size: 80%;
+}
+
+.pic    {
+    padding-bottom: 2%;
 }

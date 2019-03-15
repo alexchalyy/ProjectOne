@@ -9,8 +9,8 @@
             pagenumber: "64235",
         },
         {
-            dog: "beagle",
-            pagenumber: "4368",
+            dog: "akita",
+            pagenumber: "2871",
         },
         {
             dog: "husky",
@@ -72,12 +72,13 @@ $(document).ready(function () {
             method: "GET"
         })
             .then(function (response) {
-                console.log(getDog)
+                console.log("This is wiki response: ");
+                console.log(response);
                 var dogPage = dogBreed[getDog].pagenumber;
                 var results = response.query.pages[dogPage].extract;
                 var title = response.query.pages[dogPage].title;
 
-                $("#pet_description").prepend("<div id = \"title\"><h5>" + title.toString() + "</h5><br><p id = \"paragraph\">" + 
+                $("#pet_description").prepend("<div id = \"title\"><h5>" + title.toString() + "</h5><p id = \"paragraph\">" + 
                                               results.toString() + "</p></div>");
             });
 
@@ -88,17 +89,19 @@ $(document).ready(function () {
             dataType: 'jsonp',
             method: "GET"
         }).then(function (response) {
+            console.log("This is petfinder response: ");
             console.log(response);
             for (var i = 0; i < 4; i++) {
                 var dogData = response.petfinder.pets.pet[i];
-                var dogPhoto = dogData.media.photos.photo[1].$t;
+                var dogPhoto = dogData.media.photos.photo[0].$t;
+                console.log("dog photo = " + dogPhoto);
                 var dogName = dogData.name.$t;
                 var dogLocation = dogData.contact.city.$t;
                 var dogPhone = dogData.contact.phone.$t;
 
                 console.log("i = " + i);
-                $("#results").prepend("<div class=\"col-sm-3\"><p>" + dogName.toString() + "</p><p>" + dogLocation.toString() +
-                    "</p><p>" + dogPhone.toString() + "</p><img src = " + dogPhoto.toString() + " class = \"pics\"></div>");
+                $("#results").prepend("<div class=\"col-sm-3 pic\"><p>" + dogName.toString() + "</p><p>" + dogLocation.toString() +
+                                      "</p><p>" + dogPhone.toString() + "</p><img src = " + dogPhoto.toString() + " class = \"pics\"></div>");
             }
         })
     })
