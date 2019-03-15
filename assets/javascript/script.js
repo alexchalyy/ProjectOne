@@ -70,12 +70,14 @@ $(document).ready(function () {
         
         // console.log(dogBreed[$(this).attr("data-value")].dog);
         var getDog = [$(this).attr("data-value")];
+
+        console.log("Get dog = " + getDog);
         
         // console.log(dogBreed[$(this).attr("data-value")].pagenumber);
-        console.log(dogBreed[9].dog);
-        console.log(dogBreed[9].pagenumber);
+        //console.log(dogBreed[data-value].dog);
+        //console.log(dogBreed[data-value].pagenumber);
     
-        var queryUrl = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=5&titles="+ dogBreed[9].dog;
+        var queryUrl = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=5&titles="+ dogBreed[getDog].dog;
         
        
     $.ajax({
@@ -88,7 +90,7 @@ $(document).ready(function () {
                 
                 var dogPage = dogBreed[getDog].pagenumber;
                 // console.log(dogPage);
-                var dogPage = dogBreed[9].pagenumber;
+                var dogPage = dogBreed[getDog].pagenumber;
                 var results = response.query.pages[dogPage].extract;
                 // console.log(results);
                 var title = response.query.pages[dogPage].title;
