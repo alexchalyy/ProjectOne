@@ -5,6 +5,7 @@ $(document).ready(function () {
     // $("#submit_button").on("click", function (event) {
     $(".dropdown-item").on("click", function (event) {
         $("#pet_description").empty();
+        $("#results").empty();
         // event.preventDefault();
         // var breed = "Pit Bull Terrier" // To be replaced with values from the select box.
         var breed = $(this).attr("value"); // To be replaced with values from the select box.
