@@ -54,3 +54,15 @@ body    {
 .pics   {
     padding-bottom: 2%;
 }
+
+/*  This inserts padding on top of title.   */
+
+#title  {
+    padding-top: 2%;
+}
+
+/*  This reduces the paragraph size of description. */
+
+#paragraph  {
+    font-size: 80%;
+}

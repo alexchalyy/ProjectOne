@@ -74,17 +74,11 @@ $(document).ready(function () {
             .then(function (response) {
                 console.log(getDog)
                 var dogPage = dogBreed[getDog].pagenumber;
-                var dogPage = dogBreed[getDog].pagenumber;
                 var results = response.query.pages[dogPage].extract;
                 var title = response.query.pages[dogPage].title;
-                var head = $("<h3>");
-                var p = $("<p>");
 
-                head.text(title);
-                p.text(results);
-                $("#pet_description").append(head);
-                $("#pet_description").append(p);
-                $("#pet_description").attr
+                $("#pet_description").prepend("<div id = \"title\"><h5>" + title.toString() + "</h5><br><p id = \"paragraph\">" + 
+                                              results.toString() + "</p></div>");
             });
 
         // Petfinder API call.
