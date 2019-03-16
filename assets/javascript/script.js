@@ -86,11 +86,11 @@ $(document).ready(function () {
                 for (var i = 0; i < 4; i++) {
                     var dogData = response.petfinder.pets.pet[i];
                     var dogPhoto = dogData.media.photos.photo[2].$t;
-                    console.log("dog photo = " + dogPhoto);
                     var dogName = dogData.name.$t;
                     var dogLocation = dogData.contact.city.$t;
                     var dogPhone = dogData.contact.phone.$t;
 
+                    console.log("dog photo = " + dogPhoto);
                     console.log("i = " + i);
                     $("#results").prepend("<div class=\"col-sm-3 pic\"><p>" + dogName.toString() + "</p><p>" + dogLocation.toString() +
                         "</p><p>" + dogPhone.toString() + "</p><img id = \"p\" src = " + dogPhoto.toString() + " class = \"dogImage\"></div>");
