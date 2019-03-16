@@ -54,6 +54,7 @@ $(document).ready(function () {
         if (breed == "myModal") {
             $("#myModal").modal();
         } else {
+            
             // Wikipedia API call.
 
             $.ajax({
