@@ -32,12 +32,15 @@ var dogBreed = [
 
 $(document).ready(function () {
     $(".dropdown-item").on("click", function (event) {
+        
         //  This funciton is called when user selects a dog breed from the drop down menu.
 
         //  This sets up all variables for api get calls.
 
         var breed = $(this).attr("value"); // To be replaced with values from the select box.
+
         //Generate API URLs for Petfinder and Wikipedia.
+
         var pfApiKey = "3b7e9ed23b598ca17ae1d73381f1544f";
         var pfUrl = "https://api.petfinder.com/pet.find?key=" + pfApiKey + "&location=44113&status=A&breed=" + breed + "&count=6&output=basic&format=json";
         var queryUrl = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=pit_bull";
@@ -54,7 +57,7 @@ $(document).ready(function () {
         if (breed == "myModal") {
             $("#myModal").modal();
         } else {
-            
+
             // Wikipedia API call.
 
             $.ajax({

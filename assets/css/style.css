@@ -41,14 +41,14 @@ body    {
 
 #pet_description {
     background-color: white;
-    margin-left: 15px;
-    margin-right: -15px;
 }
 
 /*  This puts white background around results. */
 
 #results    {
     background: white;
+    margin-left: 1px;
+    margin-right: 1px;
 }
 
 /*  This puts padding on bottom of results pictures. */
@@ -71,4 +71,11 @@ body    {
 
 .pic    {
     padding-bottom: 2%;
+}
+
+/*  This creates correct width for pet description. */
+
+#pet_row    {
+    margin-left: 1px;
+    margin-right: 1px;
 }
