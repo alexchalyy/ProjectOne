@@ -34,7 +34,7 @@ body    {
 
 .dogImage {
     width: 100%;
-    height: auto;
+    height: 200px;
 }
 
 /*  This puts white background on pet description. */
@@ -71,6 +71,7 @@ body    {
 
 .pic    {
     padding-bottom: 2%;
+    width: 30%;
 }
 
 /*  This creates correct width for pet description. */

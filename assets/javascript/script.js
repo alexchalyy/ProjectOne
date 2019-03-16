@@ -32,7 +32,7 @@ var dogBreed = [
 
 $(document).ready(function () {
     $(".dropdown-item").on("click", function (event) {
-        
+
         //  This funciton is called when user selects a dog breed from the drop down menu.
 
         //  This sets up all variables for api get calls.
@@ -86,7 +86,7 @@ $(document).ready(function () {
                 console.log(response);
                 for (var i = 0; i < 4; i++) {
                     var dogData = response.petfinder.pets.pet[i];
-                    var dogPhoto = dogData.media.photos.photo[0].$t;
+                    var dogPhoto = dogData.media.photos.photo[2].$t;
                     console.log("dog photo = " + dogPhoto);
                     var dogName = dogData.name.$t;
                     var dogLocation = dogData.contact.city.$t;
@@ -94,7 +94,7 @@ $(document).ready(function () {
 
                     console.log("i = " + i);
                     $("#results").prepend("<div class=\"col-sm-3 pic\"><p>" + dogName.toString() + "</p><p>" + dogLocation.toString() +
-                        "</p><p>" + dogPhone.toString() + "</p><img src = " + dogPhoto.toString() + " class = \"pics\"></div>");
+                        "</p><p>" + dogPhone.toString() + "</p><img id = \"p\" src = " + dogPhoto.toString() + " class = \"dogImage\"></div>");
                 }
             });
         }
