@@ -88,12 +88,6 @@ body    {
         width: 100%;
     }
     #results    {
-        font-size: 60%;
-    }
-}
-
-@media(max-width: 640px)    {
-    #results    {
         font-size: 50%;
     }
 }
