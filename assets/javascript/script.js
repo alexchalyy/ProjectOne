@@ -25,6 +25,7 @@ var dogBreed = [
         pagenumber: "123"
     }
 ];
+// Sets parameters for spin.js spinner
 var opts = {
     lines: 10, // The number of lines to draw
     length: 7, // The length of each line
@@ -42,7 +43,7 @@ var opts = {
     top: 25, // Top position relative to parent in px
     left: 25 // Left position relative to parent in px
 };
-
+//  Global variables for responses from petfinder.com api
 var timerHandle = 0;
 var dogPage;
 var results;
@@ -62,8 +63,6 @@ function displayAll() {
         var dogName = dogData.name.$t;
         var dogLocation = dogData.contact.city.$t;
         var dogPhone = dogData.contact.phone.$t;
-        console.log(dogData.shelterId.$t);
-        // console.log(dogData);
         
         //sanitize nulls
         if(!dogName) {
@@ -79,8 +78,8 @@ function displayAll() {
             dogPhoto = "";
         }
 
-        console.log("dog photo = " + dogPhoto);
-        console.log("i = " + i);
+        // console.log("dog photo = " + dogPhoto);
+        // console.log("i = " + i);
 
         var result = ""
             + "<div class=\"col-sm-3 pic\">" 
@@ -99,10 +98,7 @@ function displayAll() {
 $(document).ready(function () {
     $(".dropdown-item").on("click", function (event) {
         var target = document.getElementById("spinner");
-        //var target = $("#spinner");
         spinner = new Spinner(opts).spin(target);
-        // setTimeout(function(){spinner.stop()},1000);
-        console.log(spinner);
         
 
         //  This funciton is called when user selects a dog breed from the drop down menu.
@@ -152,8 +148,7 @@ $(document).ready(function () {
                 dataType: 'jsonp',
                 method: "GET"
             }).then(function (response) {
-                // console.log("This is petfinder response: ");
-                console.log(response);
+                // console.log(response);
 
                 window.clearTimeout(timerHandle);
                 timerHandle = window.setTimeout(displayAll, 500);
