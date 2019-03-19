@@ -17,8 +17,8 @@ var dogBreed = [
         pagenumber: "253409",
     },
     {
-        dog: "dobermann",
-        pagenumber: "2139688",
+        dog: "akita_(dog)",
+        pagenumber: "59064",
     },
     {
         dog: "wolverine",
