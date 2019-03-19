@@ -29,10 +29,86 @@ var dogBreed = [
         pagenumber: "123"
     }
 ];
+var opts = {
+    lines: 10, // The number of lines to draw
+    length: 7, // The length of each line
+    width: 4, // The line thickness
+    radius: 10, // The radius of the inner circle
+    corners: 1, // Corner roundness (0..1)
+    rotate: 0, // The rotation offset
+    color: '#000', // #rgb or #rrggbb
+    speed: 1, // Rounds per second
+    trail: 60, // Afterglow percentage
+    shadow: false, // Whether to render a shadow
+    hwaccel: false, // Whether to use hardware acceleration
+    className: 'spinner', // The CSS class to assign to the spinner
+    zIndex: 2e9, // The z-index (defaults to 2000000000)
+    top: 25, // Top position relative to parent in px
+    left: 25 // Left position relative to parent in px
+};
+
+var timerHandle = 0;
+var dogPage;
+var results;
+var title;
+var dogResponse;
+var spinner;
+
+function displayAll() {
+    spinner.stop();
+
+    $("#pet_description").prepend("<div id = \"title\"><h5>" + title.toString() + "</h5><p id = \"paragraph\">" +
+    results.toString() + "</p></div>");
+
+    for (var i = 0; i < 4; i++) {
+        var dogData = dogResponse.petfinder.pets.pet[i];
+        var dogPhoto = dogData.media.photos.photo[2].$t;
+        var dogName = dogData.name.$t;
+        var dogLocation = dogData.contact.city.$t;
+        var dogPhone = dogData.contact.phone.$t;
+        console.log(dogData.shelterId.$t);
+        // console.log(dogData);
+        
+        //sanitize nulls
+        if(!dogName) {
+            dogName = "Not Available";
+        }
+        if(!dogLocation) {
+            dogLocation = "Not Available";
+        }
+        if(!dogPhone) {
+            dogPhone = "Not Available";
+        }
+        if(!dogPhoto) {
+            dogPhoto = "";
+        }
+
+        console.log("dog photo = " + dogPhoto);
+        console.log("i = " + i);
+
+        var result = ""
+            + "<div class=\"col-sm-3 pic\">" 
+                + "<p><b>" + dogName.toString() + "</b></p>"
+                + "<p>" + dogLocation.toString() + "</p>"
+                + "<p>" + dogPhone.toString() + "</p>"
+                + "<img id=\"p\""
+                    + " src=" + dogPhoto.toString() 
+                    + " class = \"dogImage\">"
+            + "</div>";
+        $("#results").prepend(result);
+    }
+
+}
 
 $(document).ready(function () {
     $(".dropdown-item").on("click", function (event) {
+        var target = document.getElementById("spinner");
+        //var target = $("#spinner");
+        spinner = new Spinner(opts).spin(target);
+        // setTimeout(function(){spinner.stop()},1000);
+        console.log(spinner);
         
+
         //  This funciton is called when user selects a dog breed from the drop down menu.
 
         //  This sets up all variables for api get calls.
@@ -43,7 +119,6 @@ $(document).ready(function () {
 
         var pfApiKey = "3b7e9ed23b598ca17ae1d73381f1544f";
         var pfUrl = "https://api.petfinder.com/pet.find?key=" + pfApiKey + "&location=44113&status=A&breed=" + breed + "&count=6&output=basic&format=json";
-        var queryUrl = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=pit_bull";
         var getDog = [$(this).attr("data-value")];
         var queryUrl = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=5&titles=" + dogBreed[getDog].dog;
 
@@ -56,6 +131,7 @@ $(document).ready(function () {
 
         if (breed == "myModal") {
             $("#myModal").modal();
+            spinner.stop();
         } else {
 
             // Wikipedia API call.
@@ -64,19 +140,17 @@ $(document).ready(function () {
                 url: queryUrl,
                 method: "GET"
             })
-                .then(function (response) {
-                    // console.log("This is wiki response: ");
-                    // console.log(response);
-                    var dogPage = dogBreed[getDog].pagenumber;
-                    var results = response.query.pages[dogPage].extract;
-                    var title = response.query.pages[dogPage].title;
-
-                    $("#pet_description").prepend("<div id = \"title\"><h5>" + title.toString() + "</h5><p id = \"paragraph\">" +
-                        results.toString() + "</p></div>");
-                });
+            .then(function (response) {
+                window.clearTimeout(timerHandle);
+                timerHandle = window.setTimeout(displayAll, 500);
+                // console.log("This is wiki response: ");
+                // console.log(response);
+                dogPage = dogBreed[getDog].pagenumber;
+                results = response.query.pages[dogPage].extract;
+                title = response.query.pages[dogPage].title;
+            });
 
             // Petfinder API call.
-
             $.ajax({
                 url: pfUrl,
                 dataType: 'jsonp',
@@ -84,20 +158,11 @@ $(document).ready(function () {
             }).then(function (response) {
                 // console.log("This is petfinder response: ");
                 console.log(response);
-                for (var i = 0; i < 4; i++) {
-                    var dogData = response.petfinder.pets.pet[i];
-                    var dogPhoto = dogData.media.photos.photo[0].$t;
-                    // console.log("dog photo = " + dogPhoto);
-                    var dogName = dogData.name.$t;
-                    var dogLocation = dogData.contact.city.$t;
-                    var dogPhone = dogData.contact.phone.$t;
-                    console.log(dogData.shelterId.$t);
-                    // console.log(dogData);
 
-                    // console.log("i = " + i);
-                    $("#results").prepend("<div class=\"col-sm-3 pic\"><p>" + dogName.toString() + "</p><p>" + dogLocation.toString() +
-                        "</p><p>" + dogPhone.toString() + "</p><img src = " + dogPhoto.toString() + " class = \"pics\"></div>");
-                }
+                window.clearTimeout(timerHandle);
+                timerHandle = window.setTimeout(displayAll, 500);
+
+                dogResponse = response;
             });
         }
 })
