@@ -21,6 +21,14 @@ var dogBreed = [
         pagenumber: "59064",
     },
     {
+        dog: "bulldog",
+        pagenumber: "242068",
+    },
+    {
+        dog: "pug",
+        pagenumber: "21234727",
+    },
+    {
         dog: "wolverine",
         pagenumber: "123"
     }
@@ -63,6 +71,7 @@ function displayAll() {
         var dogName = dogData.name.$t;
         var dogLocation = dogData.contact.city.$t;
         var dogPhone = dogData.contact.phone.$t;
+        var dogEmail = dogData.contact.email.$t;
         
         //sanitize nulls
         if(!dogName) {
@@ -77,6 +86,9 @@ function displayAll() {
         if(!dogPhoto) {
             dogPhoto = "";
         }
+        if(!dogEmail)   {
+            dogEmail = "Not Available";
+        }
 
         // console.log("dog photo = " + dogPhoto);
         // console.log("i = " + i);
@@ -86,6 +98,7 @@ function displayAll() {
                 + "<p><b>" + dogName.toString() + "</b></p>"
                 + "<p>" + dogLocation.toString() + "</p>"
                 + "<p>" + dogPhone.toString() + "</p>"
+                + "<p id = \"dogemail\">" + dogEmail.toString() + "</p>"
                 + "<img id=\"p\""
                     + " src=" + dogPhoto.toString() 
                     + " class = \"dogImage\">"
@@ -130,8 +143,8 @@ $(document).ready(function () {
             .then(function (response) {
                 window.clearTimeout(timerHandle);
                 timerHandle = window.setTimeout(displayAll, 500);
-                // console.log("This is wiki response: ");
-                // console.log(response);
+                console.log("This is wiki response: ");
+                console.log(response);
                 dogPage = dogBreed[getDog].pagenumber;
                 results = response.query.pages[dogPage].extract;
                 title = response.query.pages[dogPage].title;
@@ -143,8 +156,8 @@ $(document).ready(function () {
                 dataType: 'jsonp',
                 method: "GET"
             }).then(function (response) {
-                // console.log(response);
-
+                console.log("This is Pet Finder response: ");
+                console.log(response);
                 window.clearTimeout(timerHandle);
                 timerHandle = window.setTimeout(displayAll, 500);
                 dogResponse = response;
