@@ -87,10 +87,7 @@ body    {
     .pic    {
         width: 100%;
     }
-}
-
-@media (max-width: 2960px) {
     #results    {
-        font-size: 80%;
+        font-size: 60%;
     }
 }
