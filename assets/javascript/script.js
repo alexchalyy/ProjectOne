@@ -9,10 +9,6 @@ var dogBreed = [
         pagenumber: "64235",
     },
     {
-        dog: "bulldog",
-        pagenumber: "242068",
-    },
-    {
         dog: "chihuahua_(dog)",
         pagenumber: "26998504",
     },
@@ -64,6 +60,7 @@ $(document).ready(function () {
                 method: "GET"
             })
                 .then(function (response) {
+                    console.log("The dog breed is " + dogBreed[getDog].dog);
                     console.log("This is wiki response: ");
                     console.log(response);
                     var dogPage = dogBreed[getDog].pagenumber;
