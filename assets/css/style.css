@@ -83,8 +83,11 @@ body    {
 
 /*  This increases the image sizes on small screens so they are stacked on top of one another.   */
 
-@media (max-width: 600px) {
+@media (max-width: 812px) {
     .pic    {
         width: 100%;
+    }
+    #results    {
+        font-size: 80%;
     }
 }
