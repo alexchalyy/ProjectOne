@@ -78,10 +78,8 @@ function displayAll() {
         if(!dogPhoto) {
             dogPhoto = "";
         }
-
         console.log("dog photo = " + dogPhoto);
         console.log("i = " + i);
-
         var result = ""
             + "<div class=\"col-sm-3 pic\">" 
                 + "<p><b>" + dogName.toString() + "</b></p>"
@@ -93,7 +91,6 @@ function displayAll() {
             + "</div>";
         $("#results").prepend(result);
     }
-
 }
 
 $(document).ready(function () {
@@ -104,9 +101,7 @@ $(document).ready(function () {
         // setTimeout(function(){spinner.stop()},1000);
         console.log(spinner);
         
-
         //  This funciton is called when user selects a dog breed from the drop down menu.
-
         //  This sets up all variables for api get calls.
 
         var breed = $(this).attr("value"); // To be replaced with values from the select box.
@@ -129,9 +124,7 @@ $(document).ready(function () {
             $("#myModal").modal();
             spinner.stop();
         } else {
-
             // Wikipedia API call.
-
             $.ajax({
                 url: queryUrl,
                 method: "GET"
@@ -154,10 +147,8 @@ $(document).ready(function () {
             }).then(function (response) {
                 // console.log("This is petfinder response: ");
                 console.log(response);
-
                 window.clearTimeout(timerHandle);
                 timerHandle = window.setTimeout(displayAll, 500);
-
                 dogResponse = response;
             });
         }
