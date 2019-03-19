@@ -83,7 +83,7 @@ body    {
 
 /*  This increases the image sizes on small screens so they are stacked on top of one another.   */
 
-@media (max-width: 1000px) {
+@media (max-width: 600px) {
     .pic    {
         width: 100%;
     }
