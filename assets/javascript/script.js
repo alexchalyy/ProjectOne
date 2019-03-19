@@ -92,7 +92,6 @@ function displayAll() {
             + "</div>";
         $("#results").prepend(result);
     }
-
 }
 
 $(document).ready(function () {
@@ -100,9 +99,7 @@ $(document).ready(function () {
         var target = document.getElementById("spinner");
         spinner = new Spinner(opts).spin(target);
         
-
         //  This funciton is called when user selects a dog breed from the drop down menu.
-
         //  This sets up all variables for api get calls.
 
         var breed = $(this).attr("value"); // To be replaced with values from the select box.
@@ -125,9 +122,7 @@ $(document).ready(function () {
             $("#myModal").modal();
             spinner.stop();
         } else {
-
             // Wikipedia API call.
-
             $.ajax({
                 url: queryUrl,
                 method: "GET"
@@ -152,7 +147,6 @@ $(document).ready(function () {
 
                 window.clearTimeout(timerHandle);
                 timerHandle = window.setTimeout(displayAll, 500);
-
                 dogResponse = response;
             });
         }
