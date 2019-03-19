@@ -87,6 +87,9 @@ body    {
     .pic    {
         width: 100%;
     }
+}
+
+@media (max-width: 1440px) {
     #results    {
         font-size: 80%;
     }
