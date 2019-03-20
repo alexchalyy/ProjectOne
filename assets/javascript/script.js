@@ -17,10 +17,6 @@ var dogBreed = [
         pagenumber: "253409",
     },
     {
-        dog: "akita_(dog)",
-        pagenumber: "59064",
-    },
-    {
         dog: "bulldog",
         pagenumber: "242068",
     },
