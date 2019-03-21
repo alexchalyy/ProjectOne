@@ -144,7 +144,7 @@ $(document).ready(function () {
                 method: "GET"
             })
             .then(function (response) {
-                 // this call is to fix a bug where petfinder and Wiki returns two sets of results
+                 // this is to fix a bug where petfinder and Wiki returns two sets of results
                 $("#pet_description").empty();
                 $("#results").empty();
                 window.clearTimeout(timerHandle);
@@ -164,7 +164,7 @@ $(document).ready(function () {
             }).then(function (response) {
                 console.log("This is Pet Finder response: ");
                 console.log(response);
-                // this call is to fix a bug where petfinder and Wiki returns two sets of results
+                // this is to fix a bug where petfinder and Wiki returns two sets of results
                 $("#pet_description").empty();
                 $("#results").empty();
                 window.clearTimeout(timerHandle);
