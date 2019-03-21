@@ -54,7 +54,7 @@ var results;
 var title;
 var dogResponse;
 var spinner;
-
+var modalArray = [];
 function displayAll() {
     spinner.stop();
 
@@ -68,6 +68,10 @@ function displayAll() {
         var dogLocation = dogData.contact.city.$t;
         var dogPhone = dogData.contact.phone.$t;
         var dogEmail = dogData.contact.email.$t;
+        var dogDescription = dogData.description.$t;
+        var dogAge = dogData.age.$t;
+        var dogGender = dogData.sex.$t;
+        
         
         //sanitize nulls
         if(!dogName) {
@@ -95,18 +99,26 @@ function displayAll() {
                 + "<p>" + dogLocation.toString() + "</p>"
                 + "<p>" + dogPhone.toString() + "</p>"
                 + "<p id = \"dogemail\">" + dogEmail.toString() + "</p>"
-                + "<img id=\"p\""
+                + "<img id=\"dog-pic\""
                     + " src=" + dogPhoto.toString() 
                     + " class = \"dogImage\">"
             + "</div>";
         $("#results").prepend(result);
+        $("#dog-pic").attr({"data-name": dogName, "data-age": dogAge,"data-gender": dogGender,"data-description": dogDescription,});
+
     }
 }
 
+           
 $(document).ready(function () {
     $(".dropdown-item").on("click", function (event) {
         var target = document.getElementById("spinner");
         spinner = new Spinner(opts).spin(target);
+
+                //  This clears results before running all api get calls.
+
+                $("#pet_description").empty();
+                $("#results").empty();
         
         //  This funciton is called when user selects a dog breed from the drop down menu.
         //  This sets up all variables for api get calls.
@@ -120,11 +132,6 @@ $(document).ready(function () {
         var getDog = [$(this).attr("data-value")];
         var queryUrl = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=5&titles=" + dogBreed[getDog].dog;
 
-        //  This clears results before running all api get calls.
-
-        $("#pet_description").empty();
-        $("#results").empty();
-
         //  This activates pop-up message when user enters wolverine
 
         if (breed == "myModal") {
@@ -137,6 +144,9 @@ $(document).ready(function () {
                 method: "GET"
             })
             .then(function (response) {
+                 // this call is to fix a bug where petfinder and Wiki returns two sets of results
+                $("#pet_description").empty();
+                $("#results").empty();
                 window.clearTimeout(timerHandle);
                 timerHandle = window.setTimeout(displayAll, 500);
                 console.log("This is wiki response: ");
@@ -154,10 +164,53 @@ $(document).ready(function () {
             }).then(function (response) {
                 console.log("This is Pet Finder response: ");
                 console.log(response);
+                // this call is to fix a bug where petfinder and Wiki returns two sets of results
+                $("#pet_description").empty();
+                $("#results").empty();
                 window.clearTimeout(timerHandle);
                 timerHandle = window.setTimeout(displayAll, 500);
                 dogResponse = response;
             });
         }
+        
 })
+
+       
 });
+
+    
+        var modal = $("#bryansModal");
+
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        
+        var modalImg = $("#img01");
+        var captionText = $("#caption");
+
+        $("body").on("click", "#dog-pic" , function(){
+            
+            $("#caption").empty();
+            modal.css("display","block");
+            modalImg.attr("src", this.src);
+           
+            dataName = $(this).attr("data-name");
+            dataDescription = $(this).attr("data-description");
+            dataAge = $(this).attr("data-age");
+            dataGender = $(this).attr("data-gender");
+
+            captionText.append("<h3>" + dataName + "</h3>");
+            captionText.append("<h3> Age :  " + dataAge + "</h3>");
+            captionText.append("<h3> Gender:  " + dataGender + "</h3>");
+            captionText.append(dataDescription);
+
+
+        });
+
+        // Get the <span> element that closes the modal
+        var span = $(".close-now")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        $(".close-now").on("click" , function() { 
+            
+            modal.css("display", "none");
+        });
+   

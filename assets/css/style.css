@@ -91,3 +91,107 @@ body    {
         font-size: 50%;
     }
 }
+
+/* Style the Image Used to Trigger the Modal */
+#dog-pic {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  #pic:hover {opacity: 0.9;}
+  
+  /* The Modal (background) */
+  .big-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 50px; 
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%; 
+    height: 70%; 
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgb(250, 246, 246); /* Black w/ opacity */
+    border: 1px solid rgb(0,0,0);
+    border-radius: 25px;
+  }
+  
+  /* Modal Content (Image) */
+  .modal-picture {
+    margin: auto;
+    display: block;
+    padding: 0 20px;
+    width: 70%;
+    height: 80%;
+    max-width: 700px;
+    max-height: 500px;
+  }
+  
+  /* Caption of Modal Image (Image Text) - Same Width as the Image */
+  #caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: rgb(0,0,0);
+    padding: 10px 0;
+    height: 150px;
+  }
+  
+  /* Add Animation - Zoom in the Modal */
+  .modal-picture, #caption { 
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+  
+  @keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+  }
+  
+  /* The Close Button */
+  .close-now {
+    position: fixed;
+    top: 15px;
+    right: 35px;
+    color: rgb(0,0,0);
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .close-now:hover,
+  .close-now:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* 100% Image Width on Smaller Screens */
+  @media only screen and (max-width: 770px){
+    .modal-picture {
+      width: 80%;
+      height: 60%;
+    }
+
+    .big-modal {
+    width: 75%;
+    height: 80%;
+    }
+  }
+
+  @media only screen and (max-width: 370px){
+    .modal-picture {
+      width: 80%;
+      height: 60%;
+    }
+
+    .big-modal {
+    width: 75%;
+    height: 60%;
+    }
+  }
