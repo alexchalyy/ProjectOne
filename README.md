@@ -8,4 +8,4 @@ https://alexchalyy.github.io/ProjectOne/
 
 # Project Creation Process:
 
-html page was created and sytled using bootstrap, css, and media queries to be mobile responsive. javascript was written using jQueries which made ajax petfinder and wikipedia API get calls to display dog breed description, pics, and other descriptions on screen dynamically. Timer, bootstrap modal pop-up window, and spinner javascript were used as well.
+html page was created and styled using bootstrap, css, and media queries to be mobile responsive. javascript was written using jQueries which made ajax petfinder and wikipedia API get calls to display dog breed description, pics, and other descriptions on screen dynamically. Timer, bootstrap modal pop-up window, and spinner javascript were used as well.
